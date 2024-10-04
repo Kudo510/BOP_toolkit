@@ -4,6 +4,7 @@ from pycocotools.coco import COCO
 from pycocotools.cocoeval import COCOeval
 from bop_toolkit_lib import pycoco_utils
 import argparse
+import json 
 
 from bop_toolkit_lib import config
 from bop_toolkit_lib import dataset_params
@@ -31,7 +32,7 @@ p = {
     "bbox_type": "amodal",
     # File with a list of estimation targets to consider. The file is assumed to
     # be stored in the dataset folder.
-    "targets_filename": "test_targets_bop19.json",
+    "targets_filename": "test_targets_bop19_modified.json",
 }
 ################################################################################
 
@@ -70,6 +71,7 @@ for result_filename in p["result_filenames"]:
     method = str(result_info[0])
     dataset_info = result_info[1].split("-")
     dataset = str(dataset_info[0])
+    # breakpoint()
     split = str(dataset_info[1])
     split_type = str(dataset_info[2]) if len(dataset_info) > 2 else None
 
@@ -89,12 +91,14 @@ for result_filename in p["result_filenames"]:
         misc.log("Please correct the coco result format of {}".format(result_filename))
         exit()
 
+
     # Load coco resultsZ
     misc.log("Loading coco results...")
     coco_results = inout.load_json(
         os.path.join(p["results_path"], result_filename), keys_to_int=True
     )
 
+    # breakpoint()
     # Load the estimation targets.
     targets = inout.load_json(
         os.path.join(dp_split["base_path"], p["targets_filename"])
@@ -156,8 +160,14 @@ for result_filename in p["result_filenames"]:
                 dataset_coco_results, scene_coco_results, image_id_offset
             )
 
+    # Save the merged annotations to a temporary file
+    temp_ann_file = 'temp_coco_annotations.json'
+    with open(temp_ann_file, 'w') as f:
+        json.dump(dataset_coco_ann, f)
+
+    # breakpoint()
     # initialize COCO ground truth api
-    cocoGt = COCO(dataset_coco_ann)
+    cocoGt = COCO(temp_ann_file)
     cocoDt = cocoGt.loadRes(dataset_coco_results)
 
     # running evaluation
@@ -206,6 +216,7 @@ for result_filename in p["result_filenames"]:
     else:
         coco_scores["average_time_per_image"] = -1.0
 
+    # breakpoint()
     # Save the final scores.
     os.makedirs(os.path.join(p["eval_path"], result_name), exist_ok=True)
     final_scores_path = os.path.join(

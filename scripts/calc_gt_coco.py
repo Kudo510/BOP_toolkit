@@ -19,9 +19,9 @@ from bop_toolkit_lib import misc
 ################################################################################
 p = {
     # See dataset_params.py for options.
-    "dataset": "tudl",
+    "dataset": "icbin",
     # Dataset split. Options: 'train', 'test'.
-    "dataset_split": "train",
+    "dataset_split": "test",
     # Dataset split type. Options: 'synt', 'real', None = default. See dataset_params.py for options.
     "dataset_split_type": None,
     # bbox type. Options: 'modal', 'amodal'.
