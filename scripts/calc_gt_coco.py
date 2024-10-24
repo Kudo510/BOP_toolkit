@@ -19,13 +19,13 @@ from bop_toolkit_lib import misc
 ################################################################################
 p = {
     # See dataset_params.py for options.
-    "dataset": "icbin",
+    "dataset": "daoliuzhao",
     # Dataset split. Options: 'train', 'test'.
     "dataset_split": "test",
     # Dataset split type. Options: 'synt', 'real', None = default. See dataset_params.py for options.
     "dataset_split_type": None,
-    # bbox type. Options: 'modal', 'amodal'.
-    "bbox_type": "amodal",
+    # bbox type. Options: 'modal', 'amodal'. # modal is for visib masks # amodal for full masks
+    "bbox_type": "modal",
     # Folder containing the BOP datasets.
     "datasets_path": config.datasets_path,
 }
@@ -143,7 +143,7 @@ for scene_id in dp_split["scene_ids"]:
                 raise Exception(
                     "{} is not a valid bounding box type".format(p["bbox_type"])
                 )
-
+            # breakpoint()
             annotation_info = pycoco_utils.create_annotation_info(
                 segmentation_id,
                 im_id,

@@ -29,10 +29,10 @@ p = {
     # Annotation type that should be evaluated. Can be 'segm' or 'bbox'.
     "ann_type": "segm",
     # bbox type. Options: 'modal', 'amodal'.
-    "bbox_type": "amodal",
+    "bbox_type": "modal",
     # File with a list of estimation targets to consider. The file is assumed to
     # be stored in the dataset folder.
-    "targets_filename": "test_targets_bop19_modified.json",
+    "targets_filename": "test_targets_bop19.json",
 }
 ################################################################################
 

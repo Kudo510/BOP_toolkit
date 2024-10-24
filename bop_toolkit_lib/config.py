@@ -15,10 +15,10 @@ else:
     datasets_path = r"/home/cuong.van-dam/CuongVanDam/do_an_tot_nghiep/cnos/datasets/bop23_challenge/datasets"
 
 # Folder with pose results to be evaluated.
-results_path = r"/home/cuong.van-dam/CuongVanDam/do_an_tot_nghiep/cnos/datasets/bop23_challenge/results/cnos_exps"
+results_path = r"/home/cuong.van-dam/CuongVanDam/do_an_tot_nghiep/cnos/evaluations/results_to_eval"
 
 # Folder for the calculated pose errors and performance scores.
-eval_path = r"/home/cuong.van-dam/CuongVanDam/do_an_tot_nghiep/cnos/datasets/bop23_challenge/datasets"
+eval_path = r"/home/cuong.van-dam/CuongVanDam/do_an_tot_nghiep/cnos/evaluations"
 
 ######## Extended ########
 

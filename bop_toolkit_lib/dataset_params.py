@@ -89,6 +89,8 @@ def get_model_params(datasets_path, dataset_name, model_type=None):
         "hopev2": list(range(1, 29)),
         "hot3d": list(range(1, 33)),
         "handal": list(range(1, 40)),
+        "hudiebanjin": [11],
+        "daoliuzhao": [1]
     }[dataset_name]
 
     # ID's of objects with ambiguous views evaluated using the ADI pose error
@@ -110,6 +112,8 @@ def get_model_params(datasets_path, dataset_name, model_type=None):
         "hopev2": [],
         "hot3d": [1, 2, 3, 5, 22, 24, 25, 29, 30, 32],
         "handal": [26, 35, 36, 37, 38, 39, 40],
+        "hudiebanjin": [],
+        "daoliuzhao": []
     }[dataset_name]
 
     # T-LESS includes two types of object models, CAD and reconstructed.
@@ -304,6 +308,23 @@ def get_split_params(datasets_path, dataset_name, split, split_type=None):
             p["depth_range"] = (638.38, 775.97)
             p["azimuth_range"] = (0, 2 * math.pi)
             p["elev_range"] = (-0.5 * math.pi, 0.5 * math.pi)
+
+    elif dataset_name == "hudiebanjin":
+        p["scene_ids"] = [0]
+        p["im_size"] = (1440, 1080)
+
+        if split == "test":
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+    elif dataset_name == "daoliuzhao":
+        p["scene_ids"] = [0]
+        p["im_size"] = (1440, 1080)
+
+        if split == "test":
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
 
     # HomebrewedDB (HB).
     # 'hbs' -- Subset of the HB dataset used in the BOP Challenge 2019/2020.

@@ -89,9 +89,22 @@ python scripts/eval_bop19_pose.py --renderer_type=vispy --result_filenames=NAME_
 By default, this script is run with 10 parallel processes. You can change the number of processes by setting the `--num_worker 1`.
 
 ### 6. Evaluate the detections / instance segmentations
+
+export PYTHONPATH=/home/cuong.van-dam/CuongVanDam/do_an_tot_nghiep/bop_toolkit:$PYTHONPATH
+
 ```
 python scripts/eval_bop22_coco.py --result_filenames=NAME_OF_JSON_WITH_COCO_RESULTS --ann_type='bbox'
 ```
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_icbin-test.json --ann_type='segm'
+
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_hudiebanjin-test.json --ann_type='segm'
+
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_daoliuzhao-test.json --ann_type='segm'
+
+the file name should be 
+{method}_{dataset}-{split}-{split_type}.json, {method}_{dataset}-{split}-{split_type}.json, {method}_{dataset}-{split}-{split_type}.json, etc
+  split_type is optional
+
 --result_filenames: Comma-separated filenames with per-dataset coco results (place them under your `results_path` defined in your [config.py](bop_toolkit_lib/config.py)).  
 --ann_type: 'bbox' to evaluate amodal bounding boxes. 'segm' to evaluate segmentation masks.
 
