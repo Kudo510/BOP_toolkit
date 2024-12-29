@@ -32,7 +32,7 @@ def _estimate_visib_mask(d_test, d_model, delta, visib_mode="bop19"):
         visib_mask = np.logical_and(d_diff <= delta, mask_valid)
 
     elif visib_mode == "bop19":
-        d_diff = d_model.astype(np.float32) - d_test.astype(np.float32)
+        d_diff = d_model.astype(np.float32) - d_test.astype(np.float32) # the depth value at
         visib_mask = np.logical_and(
             np.logical_or(d_diff <= delta, d_test == 0), d_model > 0
         )

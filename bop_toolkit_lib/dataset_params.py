@@ -89,8 +89,26 @@ def get_model_params(datasets_path, dataset_name, model_type=None):
         "hopev2": list(range(1, 29)),
         "hot3d": list(range(1, 33)),
         "handal": list(range(1, 40)),
+        "qiuxiao": [1],
+        "neixinlun": [2],
+        "neixinlun2": [2],
+        "zhouchengquan": [3],
+        "hudiejian": [4],
+        "daoliuzhao": [5],
+        "banjinjia": [6],
+        "liangan": [7],
+        "diaohuanluoshuan": [8],
+        "yuanguan": [9],
+        "lianjiejian": [10],
         "hudiebanjin": [11],
-        "daoliuzhao": [1]
+        "banjinjianlong": [12],
+        "zhijiaobanjin": [13],
+        "jingjiagongjian": [14],
+        "jiaojieyuanguan": [15],
+        "ganqiuxiao": [16],
+        "fanguangzhao": [17],
+        "lungufanlan": [18],
+        "xyz": list(range(1,19))
     }[dataset_name]
 
     # ID's of objects with ambiguous views evaluated using the ADI pose error
@@ -112,8 +130,26 @@ def get_model_params(datasets_path, dataset_name, model_type=None):
         "hopev2": [],
         "hot3d": [1, 2, 3, 5, 22, 24, 25, 29, 30, 32],
         "handal": [26, 35, 36, 37, 38, 39, 40],
-        "hudiebanjin": [],
-        "daoliuzhao": []
+        "qiuxiao": [1],
+        "neixinlun": [2],
+        "neixinlun2": [2],
+        "zhouchengquan": [3],
+        "hudiejian": [],
+        "daoliuzhao": [5],
+        "banjinjia": [],
+        "liangan": [7],
+        "diaohuanluoshuan": [8],
+        "yuanguan": [9],
+        "lianjiejian": [],
+        "hudiebanjin": [11],
+        "banjinjianlong": [12],
+        "zhijiaobanjin": [],
+        "jingjiagongjian": [],
+        "jiaojieyuanguan": [],
+        "ganqiuxiao": [16],
+        "fanguangzhao": [17],
+        "lungufanlan": [18],
+        "xyz":[1,2,3,5,7,8,9,11,12,16,17,18] # [1,2,3,5,7,8,9,11,12,16,17,18]
     }[dataset_name]
 
     # T-LESS includes two types of object models, CAD and reconstructed.
@@ -309,22 +345,327 @@ def get_split_params(datasets_path, dataset_name, split, split_type=None):
             p["azimuth_range"] = (0, 2 * math.pi)
             p["elev_range"] = (-0.5 * math.pi, 0.5 * math.pi)
 
-    elif dataset_name == "hudiebanjin":
-        p["scene_ids"] = [0]
+    elif dataset_name == "qiuxiao":
+        p["scene_ids"] = {
+            "test": [0, 1, 2], # 29,30,31,32], #[0, 1, 2],
+            # "scene000000": [0, 1, 2],
+            # "scene000001": [0, 1, 2],
+            # "scene000002": [0, 1, 2],
+            # "scene000003": [0, 1, 2],
+            # "scene000004": [0, 1, 2]
+        }[split]
         p["im_size"] = (1440, 1080)
 
-        if split == "test":
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
             p["depth_range"] = (454.56, 1076.29)
             p["azimuth_range"] = (0, 2 * math.pi)
             p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
+    elif dataset_name == "neixinlun":
+        p["scene_ids"] = {
+            "test": [0, 1, 2],
+            "scene000000": [0, 1, 2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080)
+
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
+    elif dataset_name == "neixinlun2":
+        p["scene_ids"] = {
+            "test": [0, 1, 2],
+            "scene000000": [0, 1, 2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080)
+
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
+    elif dataset_name == "zhouchengquan":
+        p["scene_ids"] = {
+            "test": [0, 1, 2],
+            "scene000000": [0, 1, 2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080)
+
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
+    elif dataset_name == "hudiejian":
+        p["scene_ids"] = {
+            "test": [0, 1, 2],
+            "scene000000": [0, 1, 2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080)
+
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
     elif dataset_name == "daoliuzhao":
-        p["scene_ids"] = [0]
+        p["scene_ids"] = {
+            "test": [0, 1, 2],
+            "scene000000": [0, 1, 2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
         p["im_size"] = (1440, 1080)
 
-        if split == "test":
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
             p["depth_range"] = (454.56, 1076.29)
             p["azimuth_range"] = (0, 2 * math.pi)
             p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
+    elif dataset_name == "banjinjia":
+        p["scene_ids"] = {
+            "test": [0, 1, 2],
+            "scene000000": [2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080) # (1544,2064) # 
+        
+
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
+    elif dataset_name == "liangan":
+        p["scene_ids"] = {
+            "test": [0, 1, 2],
+            "scene000000": [0, 1, 2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080)
+
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
+    elif dataset_name == "diaohuanluoshuan":
+        p["scene_ids"] = {
+            "test": [0, 1, 2],
+            "scene000000": [0, 1, 2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080)
+
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
+    elif dataset_name == "yuanguan":
+        p["scene_ids"] = {
+            "test": [0, 1, 2],
+            "scene000000": [0, 1, 2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080)
+
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
+    elif dataset_name == "lianjiejian":
+        p["scene_ids"] = {
+            "test": [0, 1, 2],
+            "scene000000": [0, 1, 2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080)
+
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
+    elif dataset_name == "hudiebanjin":
+        p["scene_ids"] = {
+            "test": [0, 1, 2],
+            "scene000000": [0, 1, 2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080)
+
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
+    elif dataset_name == "banjinjianlong":
+        p["scene_ids"] = {
+            "test": [0, 1, 2],
+            "scene000000": [0, 1, 2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080)
+
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
+    elif dataset_name == "zhijiaobanjin":
+        p["scene_ids"] = {
+            "test": [0, 1, 2],
+            "scene000000": [0, 1, 2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080)
+
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
+    elif dataset_name == "jingjiagongjian":
+        p["scene_ids"] = {
+            "test": [0, 1, 2],
+            "scene000000": [0, 1, 2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080)
+
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
+    elif dataset_name == "jiaojieyuanguan":
+        p["scene_ids"] = {
+            "test": [0, 1, 2],
+            "scene000000": [0, 1, 2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080)
+
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+    
+    elif dataset_name == "xyz":
+        p["scene_ids"] = {
+            "test": [1, 2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 24, 25, 26, 27, 29, 30, 31, 32, 34, 35, 36, 37, 39, 40, 41, 42, 44, 45, 47, 48, 49, 50, 52, 53, 54, 55, 57, 58, 59, 60, 62, 63, 64, 65, 67, 68, 70, 71, 72, 73, 75, 76, 77, 78, 80, 81, 82, 83, 85, 86],
+            # "scene000000": [0, 1, 2],
+            # "scene000001": [0, 1, 2],
+            # "scene000002": [0, 1, 2],
+            # "scene000003": [0, 1, 2],
+            # "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080)
+
+        if split in ["test"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+            
+    elif dataset_name == "ganqiuxiao":
+        p["scene_ids"] = {
+            "test":  [0, 1, 2], #[1,2,3,4], #  [0, 1, 2],
+            "scene000000": [0, 1, 2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080)
+
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
+    elif dataset_name == "fanguangzhao":
+        p["scene_ids"] = {
+            "test": [0, 1, 2],
+            "scene000000": [0, 1, 2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080)
+
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
+    elif dataset_name == "lungufanlan":
+        p["scene_ids"] = {
+            "test": [0, 1, 2],
+            "scene000000": [0, 1, 2],
+            "scene000001": [0, 1, 2],
+            "scene000002": [0, 1, 2],
+            "scene000003": [0, 1, 2],
+            "scene000004": [0, 1, 2]
+        }[split]
+        p["im_size"] = (1440, 1080)
+
+        if split in ["test", "scene000000", "scene000001", "scene000002", "scene000003", "scene000004"]:
+            p["depth_range"] = (454.56, 1076.29)
+            p["azimuth_range"] = (0, 2 * math.pi)
+            p["elev_range"] = (-1.0297, 0.5 * math.pi)  # (-59, 90) [deg].
+
 
     # HomebrewedDB (HB).
     # 'hbs' -- Subset of the HB dataset used in the BOP Challenge 2019/2020.
@@ -519,6 +860,7 @@ def get_split_params(datasets_path, dataset_name, split, split_type=None):
             }
         )
 
+    
     else:
         assert exts is not None, "Need to set 'exts' for dataset {}".format()
         for moda in p["im_modalities"]:

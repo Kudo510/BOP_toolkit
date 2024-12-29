@@ -12,7 +12,7 @@ import os
 if "BOP_PATH" in os.environ:
     datasets_path = os.environ["BOP_PATH"]
 else:
-    datasets_path = r"/home/cuong.van-dam/CuongVanDam/do_an_tot_nghiep/cnos/datasets/bop23_challenge/datasets"
+    datasets_path = "/home/cuong.van-dam/CuongVanDam/do_an_tot_nghiep/cnos/datasets/bop23_challenge/datasets" #  r"/home/cuong.van-dam/CuongVanDam/do_an_tot_nghiep/Sam6D/SAM-6D/Data/BOP"
 
 # Folder with pose results to be evaluated.
 results_path = r"/home/cuong.van-dam/CuongVanDam/do_an_tot_nghiep/cnos/evaluations/results_to_eval"
@@ -23,7 +23,7 @@ eval_path = r"/home/cuong.van-dam/CuongVanDam/do_an_tot_nghiep/cnos/evaluations"
 ######## Extended ########
 
 # Folder for outputs (e.g. visualizations).
-output_path = r"/home/cuong.van-dam/CuongVanDam/do_an_tot_nghiep/cnos/datasets/bop23_challenge/datasets/banjinjian/render_images"
+output_path = r"/home/cuong.van-dam/CuongVanDam/do_an_tot_nghiep/foundpose/bop_datasets/"
 
 # For offscreen C++ rendering: Path to the build folder of bop_renderer (github.com/thodan/bop_renderer).
 bop_renderer_path = r"/path/to/bop_renderer/build"

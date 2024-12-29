@@ -495,6 +495,9 @@ class RendererVispy(renderer.Renderer, app.Canvas, metaclass=SingletonArgs):
         self.clip_near = bbox_corners_eye_z.min()
         self.clip_far = bbox_corners_eye_z.max()
 
+        # self.clip_near = 0
+        # self.clip_far = 1000000000000
+
         # Projection matrix.
         K = np.array([[fx, 0.0, cx], [0.0, fy, cy], [0.0, 0.0, 1.0]])
         mat_proj = _calc_calib_proj(
@@ -574,8 +577,23 @@ class RendererVispy(renderer.Renderer, app.Canvas, metaclass=SingletonArgs):
         """
         # Update the OpenGL program.
         program = self.depth_programs[obj_id]
+
+        # # If your scene is in millimeters (which it appears to be)
+        # self.clip_near = 100.0    # 10cm
+        # self.clip_far = 1000.0    # 1m
+
+        # # If you want to keep your scene scale, adjust projection matrix instead
+        # def adjust_projection_matrix(mat_proj, scale=0.001):
+        #     # Scale the projection to handle millimeter units
+        #     scaled_proj = mat_proj.copy()
+        #     scaled_proj[:3, :] *= scale
+        #     return scaled_proj
+
+        # mat_proj = adjust_projection_matrix(mat_proj)
         program["u_mv"] = _calc_model_view(mat_model, mat_view)
         program["u_mvp"] = _calc_model_view_proj(mat_model, mat_view, mat_proj)
+
+
 
         # Rendering.
         program.draw("triangles", self.index_buffers[obj_id])
@@ -594,6 +612,6 @@ class RendererVispy(renderer.Renderer, app.Canvas, metaclass=SingletonArgs):
         addi = self.clip_far / (self.clip_near - self.clip_far)
         bg = dep == 1
         dep = mult / (dep + addi)
-        dep[bg] = 0
+        dep[bg] = 0 # bg as background
 
         return dep

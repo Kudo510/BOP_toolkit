@@ -90,7 +90,13 @@ By default, this script is run with 10 parallel processes. You can change the nu
 
 ### 6. Evaluate the detections / instance segmentations
 
+amodal is really for full masks # modal for visble masks
+
 export PYTHONPATH=/home/cuong.van-dam/CuongVanDam/do_an_tot_nghiep/bop_toolkit:$PYTHONPATH
+
+python scripts/calc_gt_coco.py
+
+python scripts/calc_gt_masks.py
 
 ```
 python scripts/eval_bop22_coco.py --result_filenames=NAME_OF_JSON_WITH_COCO_RESULTS --ann_type='bbox'
@@ -100,6 +106,33 @@ python scripts/eval_bop22_coco.py --result_filenames=CNOS_icbin-test.json --ann_
 python scripts/eval_bop22_coco.py --result_filenames=CNOS_hudiebanjin-test.json --ann_type='segm'
 
 python scripts/eval_bop22_coco.py --result_filenames=CNOS_daoliuzhao-test.json --ann_type='segm'
+
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_banjinjia-test.json --ann_type='segm'
+
+
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_qiuxiao-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_neixinlun-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_neixinlun2-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_zhouchengquan-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_hudiejian-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_daoliuzhao-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_banjinjia-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_liangan-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_diaohuanluoshuan-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_yuanguan-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_lianjiejian-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_hudiebanjin-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_banjinjianlong-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_zhijiaobanjin-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_jingjiagongjian-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_jiaojieyuanguan-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_ganqiuxiao-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_fanguangzhao-test.json --ann_type='segm'
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_lungufanlan-test.json --ann_type='segm'
+
+python scripts/eval_bop22_coco.py --result_filenames=CNOS_xyz-test.json --ann_type='segm'
+
+
 
 the file name should be 
 {method}_{dataset}-{split}-{split_type}.json, {method}_{dataset}-{split}-{split_type}.json, {method}_{dataset}-{split}-{split_type}.json, etc

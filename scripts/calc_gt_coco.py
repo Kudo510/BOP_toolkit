@@ -14,12 +14,33 @@ from bop_toolkit_lib import dataset_params
 from bop_toolkit_lib import inout
 from bop_toolkit_lib import misc
 
+    # [
+    #             "qiuxiao",
+    #             "neixinlun",
+    #             "neixinlun2",
+    #             "zhouchengquan",
+    #             "hudiejian",
+    #             "daoliuzhao",
+    #             "banjinjia",
+    #             "liangan",
+    #             "diaohuanluoshuan",
+    #             "yuanguan",
+    #             "lianjiejian",
+    #             "hudiebanjin",
+    #             "banjinjianlong",
+    #             "zhijiaobanjin",
+    #             "jingjiagongjian",
+    #             "jiaojieyuanguan",
+    #             "ganqiuxiao",
+    #             "fanguangzhao",
+    #             "lungufanlan"
+    #         ],
 
 # PARAMETERS.
 ################################################################################
 p = {
     # See dataset_params.py for options.
-    "dataset": "daoliuzhao",
+    "dataset": "xyz",
     # Dataset split. Options: 'train', 'test'.
     "dataset_split": "test",
     # Dataset split type. Options: 'synt', 'real', None = default. See dataset_params.py for options.
@@ -91,7 +112,7 @@ for scene_id in dp_split["scene_ids"]:
     # Output coco path
     coco_gt_path = dp_split[tpath_keys["scene_gt_coco_tpath"]].format(scene_id=scene_id)
     if bbox_type == "modal":
-        coco_gt_path = coco_gt_path.replace("scene_gt_coco", "scene_gt_coco_modal")
+        coco_gt_path = coco_gt_path.replace("scene_gt_coco", "scene_gt_coco")
     misc.log(
         "Calculating Coco Annotations - dataset: {} ({}, {}), scene: {}".format(
             p["dataset"], p["dataset_split"], p["dataset_split_type"], scene_id

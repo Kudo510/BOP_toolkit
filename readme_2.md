@@ -1,0 +1,1 @@
+due to the wrong depth we clacluate the masks and visible masks only based on the 
